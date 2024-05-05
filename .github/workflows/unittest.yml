@@ -55,7 +55,11 @@ jobs:
       shell: bash -l {0}
       timeout-minutes: 5
       run: |
+        mamba install -y coverage
         pip install versioneer[toml]==0.29
         pip install . --no-deps --no-build-isolation
-        cd tests
-        python -m unittest discover .
+        coverage run -a --omit="executorlib_core/_version.py,tests/*" -m unittest discover .
+        coverage xml
+    - name: Coveralls
+      if:  matrix.label == 'linux-64-py-3-12'
+      uses: coverallsapp/github-action@v2
