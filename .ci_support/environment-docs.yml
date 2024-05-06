@@ -9,5 +9,5 @@ dependencies:
 - openmpi
 - cloudpickle =3.0.0
 - tqdm =4.66.4
-- pyzmq =26.0.2
+- pyzmq =26.0.3
 - jupyter-book =1.0.0
